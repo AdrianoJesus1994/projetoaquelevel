@@ -21,7 +21,7 @@ public class DaoUtil {
 		
 		String user = env.getProperty("spring.datasource.username");
         String pws = env.getProperty("spring.datasource.password");
-        String driver = env.getProperty("spring.datasource.driver-class-name"); //"com.mysql.jdbc.Driver";
+        String driver = "com.mysql.jdbc.Driver";
         String url = env.getProperty("spring.datasource.url");
         
         try {
