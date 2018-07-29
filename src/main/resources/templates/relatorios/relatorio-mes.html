@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<section class="offset-lg-2 col-md-10" layout:fragment="conteudo">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+        <style>
+            @media print {
+                body * {
+                    visibility: hidden;
+                }
+                .printable, .printable * {
+                    visibility: visible;
+                }
+                .printable {
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                }
+            }
+        </style>
+
+        <div class="col-md-12">
+            <div class="form-group col-md-3">
+                <label for="txt_reservatorio">Reservatório:</label>
+                <select name="lst_nomeReservatorio" id="lst_nomeReservatorio" class="form-control input-sm" required>
+                    <option value="">--Selecione--</option>
+                    <option th:each="reservatorio : ${reservatorios}" th:value="${reservatorio.id}" th:text="${reservatorio.nome}"></option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txt_dataInicio">Início</label>
+                <select type="date" name="txt_dataInicio" id="txt_dataInicio" class="form-control input-sm">
+                    <option value="">--Selecione--</option>
+                    <option value="01">Janeiro</option>
+                    <option value="02">Fevereiro</option>
+                    <option value="03">Março</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Maio</option>
+                    <option value="06">Junho</option>
+                    <option value="07">Julho</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txt_dataFim">Fim</label>
+                <select type="date" name="txt_dataFim" id="txt_dataFim" class="form-control input-sm">
+                    <option value="">--Selecione--</option>
+                    <option value="01">Janeiro</option>
+                    <option value="02">Fevereiro</option>
+                    <option value="03">Março</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Maio</option>
+                    <option value="06">Junho</option>
+                    <option value="07">Julho</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <button type="button" id="btn-gerar" onclick="gerarRelatorio()" class="btn btn-button btn-sm btn-warning">Gerar Relatório</button>
+            </div>
+        </div>
+        <div class="col-md-6 printable" style="height: 200px !important; padding-bottom: 10px;">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="relatorio">
+            <br><br>
+            <hr>    
+            <table name="table-relatorio" id="table-relatorio" class="table table-borderless printable">
+                <thead>
+                    <th scope="col">Data</th>
+                    <th scope="col">Volume (L)</th>
+                </thead>
+                <tbody id="conteudo">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" id="btn-imprimir" onclick="imprimirRelatorio()" class="btn btn-button btn-sm btn-info">Imprimir Relatório</button>            
+        </div>
+        
+       
+        
+
+
+        
+     
+</section>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<section class="offset-lg-2 col-md-10" layout:fragment="conteudo">
+	<br>
+	
+	<div class="col-md-12">
+		<div class="col" align="center">
+			<img src="/img/tank.svg" width="100">
+			
+		</div>
+		<br/>
+		
+	</div>
+
+	<div th:switch="${reservatorio.tipo.id}" align="center">
+		<h3>Nome: <span th:text="${reservatorio.nome}"></span></h3>
+		<h5>Tipo: <span th:text="${reservatorio.tipo.tipo}"></span></h5>
+		<div th:case="1">
+			<h5>Altura: <span th:text="${reservatorio.altura}"></span> cm</h5>
+			<h5>Largura: <span th:text="${reservatorio.largura}"></span> cm</h5>
+			<h5>Profundidade: <span th:text="${reservatorio.profundidade}"></span> cm</h5>
+		</div>
+		<div th:case="2">
+			<h5>Altura: <span th:text="${reservatorio.altura}"></span> cm</h5>
+			<h5>Raio Maior: <span th:text="${reservatorio.raio}"></span> cm</h5>
+			<h5>Raio Menor: <span th:text="${reservatorio.raioMenor}"></span> cm</h5>
+		</div>
+		<div th:case="3">
+			<h5>Altura: <span th:text="${reservatorio.altura}"></span> cm</h5>
+			<h5>Raio: <span th:text="${reservatorio.raioMaior}"></span> cm</h5>
+		</div>
+		
+	</div>
+	
+	
+    <br/>
+    <a th:href="@{/reservatorios}" class="btn btn-link btn-sm btn">Voltar</a>
+</section>

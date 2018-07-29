@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<section class="offset-lg-2 col-md-10" layout:fragment="conteudo">
+	<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${!#strings.isEmpty(msgSuccess)}">
+	  <strong>Legal!</strong> <br>Reservatório cadastrado com sucesso.
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${!#strings.isEmpty(msgDelete)}">
+	  <strong>Pronto!</strong> <br>Reservatório removido com sucesso.
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	
+	<div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${!#strings.isEmpty(msgDeleteErro)}">
+	  <strong>Pronto!</strong> <br>Houve um problema ao remover este reservatório.
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	
+    <br/>
+    <a th:href="@{/reservatorios/add}" class="btn btn-success btn-sm btn"><i class="material-icons">add_circle_outline</i></a>
+  
+  		<table class="table table-borderless">
+                <thead>
+                    <th>
+                        <a th:href="@{/reservatorios/add}"></a>
+                    </th>
+                    <th scope="col">Nome do Reservatório</th>
+                    <th scope="col">Tipo de Reservatório</th>
+                    <th scope="col"></th>
+                </thead>
+                <tbody>
+                    <tr th:each="reservatorio : ${reservatorios}">
+                        <td></td>
+                        <td th:text="${reservatorio.nome}"></td>
+                        <td th:text="${reservatorio.tipo.tipo}"></td>
+                        <td>
+                        	<form th:action="@{/reservatorios/detalhes/{id}(id=${reservatorio.id})}" class="form" method="POST">
+                                <input type="hidden" name="_method" value="GET">
+                                <button type="submit" class="btn btn-sm	 btn-warning">
+                                    <i class="material-icons">visibility</i>
+                                </button>
+                            </form>
+                            
+                            <form th:action="@{/reservatorios/alterar/{id}(id=${reservatorio.id})}" class="form" method="POST">
+                                <input type="hidden" name="_method" value="PUT">
+                                <button type="submit" class="btn btn-sm	 btn-primary">
+                                    <i class="material-icons">create</i>
+                                </button>
+                            </form>
+                            <form th:action="@{/reservatorios/remover/{id}(id=${reservatorio.id})}" class="form" method="POST" th:onsubmit="'return confirm(\'Posso remover ' + ${reservatorio.nome} + '?\');'">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="material-icons">delete_forever</i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr th:if="${reservatorios.empty}">
+						<td colspan="5">Nenhum reservatório encontrado.</td>
+					</tr>
+                </tbody>
+
+            </table>
+</section>

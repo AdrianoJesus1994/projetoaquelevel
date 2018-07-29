@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<section class="offset-lg-2 col-md-10" layout:fragment="conteudo">
+	<br>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${msgError}">
+	  <strong>Ops!</strong> Ocorreu um erro ao cadastrar este reservatório. Tente novamente.
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>    
+    <form th:action="@{/reservatorios/edit}" th:object="${reservatorio}" method="POST">
+        <div class="form-group col-md-10">
+                <label for="txt_nomeReservatorio">Nome do Reservatório:</label>
+                <input type="text" id="txt_nomeReservatorio" name="txt_nomeReservatorio" class="form-control input-sm" th:field="*{nome}" required>
+        </div>
+        <div class="form-group col-md-10">
+            <label for="lst_tipoReservatorio">Tipo Reservatório:</label>
+            <select name="lst_tipoReservatorio" id="lst_tipoReservatorio" th:field="*{tipo.id}" class="form-control input-sm">
+            	<option value="">--Selecione--</option>
+                <option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.tipo}"></option>
+            </select>
+        </div>
+        <div class="form-group col-md-10">
+                <label for="txt_alturaReservatorio">Altura:</label>
+                <input type="number" id="txt_alturaReservatorio" name="txt_alturaReservatorio" class="form-control input-sm" th:field="*{altura}" required>
+        </div>
+        <div class="form-group col-md-10">
+                <label for="txt_larguraReservatorio">Largura:</label>
+                <input type="number" id="txt_larguraReservatorio" name="txt_larguraReservatorio" class="form-control input-sm" th:field="*{largura}">
+        </div>
+        <div class="form-group col-md-10">
+                <label for="txt_profundidadeReservatorio">Profundidade:</label>
+                <input type="text" id="txt_profundidadeReservatorio" name="txt_profundidadeReservatorio" class="form-control input-sm" th:field="*{profundidade}">
+        </div>
+        <div class="form-group col-md-10">
+                <label for="txt_raioMaiorReservatorio">Raio Maior:</label>
+                <input type="text" id="txt_raioMaiorReservatorio" name="txt_raioMaiorReservatorio" class="form-control input-sm" th:field="*{raio}">
+        </div>
+        
+        <div class="form-group col-md-10">
+                <label for="txt_raioMenorReservatorio">Raio Maior:</label>
+                <input type="text" id="txt_raioMenorReservatorio" name="txt_raioMenorReservatorio" class="form-control input-sm" th:field="*{raioMenor}">
+        </div>
+        <input type="hidden" name="txt_id" th:field="*{id}">
+        <div class="col-md-12" align="center">
+        	<a th:href="@{/reservatorios}" class="btn btn-link btn-md btn">Voltar</a>
+       		<button type="submit" class="btn btn-sm btn-primary">Atualizar!</button>
+        </div>
+        <br/>
+    </form>	
+    
+</section>

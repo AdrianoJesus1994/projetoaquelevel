@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <title>AquaLevel</title>
+
+    <style>
+        @font-face {
+            font-family: AmpleSoft-Medium;
+            src: url("fonts/AmpleSoft-Medium-webfont.ttf");
+        }
+
+        body{
+            background-color: #34495e;
+        }
+
+        .login{
+            margin-top: 10%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            -webkit-box-shadow: 1px 0px 4px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    1px 0px 4px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         1px 0px 4px 0px rgba(50, 50, 50, 0.75);
+        }
+
+        a{
+            color: #fff !important;
+        }
+
+        label{
+            font-family: 'AmpleSoft-Medium', sans-serif;
+            color: #666;
+        }
+
+        h2{
+            font-family: 'AmpleSoft-Medium', sans-serif;
+            color: rgb(102,51,153);
+            text-align: center; 
+        }
+    
+    </style>
+
+</head>
+<body>
+
+    <div class="container" align="">
+    
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 login">
+                <h2>AquaLevel</h2>
+                <hr>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${!#strings.isEmpty(msgError)}">
+				  <strong>Ops!</strong> Email ou Senha inválidos.
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${!#strings.isEmpty(msgSuccess)}">
+				  <strong>Legal!</strong> <br>Seu cadastro foi realizado com sucesso.
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<form id="form-login" name="form-login" method="post" th:action="@{/login}" th:object="${usuario}">
+	                <div class="form-group">
+	                    <label for="txt_login">E-mail:</label>
+	                    <input type="email" id="txt_login" name="txt_login" th:field="*{email}" class="form-control input-sm" required>
+	                </div>
+	                <div class="form-group">
+	                    <label for="txt_senha">Senha:</label>
+	                    <input type="password" id="txt_senha" name="txt_senha" th:field="*{senha}" class="form-control input-sm" required>
+	                </div>
+	                <button type="submit" class="btn btn-block btn-success">Entrar</button>
+	                <a class="btn btn-block btn-primary" th:href="@{/cadastro}">Cadastrar-me</a>
+                </form>
+                
+            </div>
+        </div>
+       
+    </div>
+    
+</body>
+</html>

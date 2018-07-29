@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<section class="offset-lg-2 col-md-10" layout:fragment="conteudo">
+	<br>
+	<br/>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${msgError}">
+	  <strong>Ops!</strong> <span th:text="${msgError}"></span>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+    <form th:action="@{/sensores/add}" th:object="${sensor}" method="post">
+        <div class="form-group col-md-10">
+                <label for="txt_nomeSensor">Nome do Sensor:</label>
+                <input type="text" id="txt_nomeSensor" name="txt_nomeSensor" class="form-control input-sm" th:field="*{nome}" required>
+        </div>
+        <div class="form-group col-md-10">
+                <label for="txt_´codigoSensor">Codigo:</label>
+                <input type="number" id="txt_codigoSensor" name="txt_codigoSensor" class="form-control input-sm" th:field="*{codigo}" required>
+        </div>
+        <div class="form-group col-md-10">
+            <label for="lst_nomeReservatorio">Reservatorio:</label>
+            <select name="lst_nomeReservatorio" id="lst_nomeReservatorio" th:field="*{idReservatorio.id}" class="form-control input-sm" required>
+            	<option value="">--Selecione--</option>
+                <option th:each="reservatorio : ${reservatorios}" th:value="${reservatorio.id}" th:text="${reservatorio.nome}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-sm btn-warning">Pronto!</button>
+    </form>
+
+	
+    <br/>
+    <a th:href="@{/sensores}" class="btn btn-success btn-sm btn"><i class="material-icons">reply_all</i></a>
+</section>

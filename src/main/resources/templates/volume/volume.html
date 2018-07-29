@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<section class="offset-lg-2 col-md-10" layout:fragment="conteudo">
+        <br>
+
+        <style>
+            h, h5{
+                color: #666 !important;
+                font-family: 'AmpleSoft-Medium', sans-serif;
+            }
+
+            .tanques{
+                background-color: #f6f6f6;
+                height: auto;
+            }
+
+            p{
+                font-size: 14px;
+                color: #666;
+                width: 600px;
+                text-align: justify;
+                padding-bottom: 20px;
+            }
+            
+        </style>
+        
+        <div class="col-md-12">
+            <h5>Reservatorio: <b><span th:text="${reservatorio.nome}"></span></b></h6>
+            <h6>Tipo: <b><span th:text="${reservatorio.tipo.tipo}"></span></b></h6>
+            <h6>Capacidade: <b><span th:text="${capacidade}"></span> <small>Litros</small></b></h6>
+            <div class="col-md-12 tanques" align="center">
+                <div th:if="${faixaAzul}">
+                    <img src="/img/tank-blue.svg" alt="" width="200">
+                    <h6>Volume atual: <b><span th:text="${volume.volume}"></span> <small>Litros</small></b></h6>
+                    <h6>Ultima verificação: <b><span th:text="${volume.data}"></span></b></h6>
+                    <hr>
+                    <h5>Sinal Azul!</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies, velit et egestas suscipit, eros elit dictum lacus, sit amet luctus arcu erat non erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean in leo ac purus auctor finibus. Sed vehicula posuere turpis nec auctor. Sed tellus urna, interdum ac lacus vel, ornare mattis neque. Donec quis sollicitudin neque, vel vestibulum augue. Morbi mauris orci, mollis tincidunt elit ac, laoreet tristique sapien. Curabitur ut malesuada ex. Curabitur dignissim aliquam nisl, in porttitor turpis. In egestas et ex a euismod. Nulla nisi diam, pulvinar ac accumsan vitae, laoreet nec urna. Cras vestibulum est metus, vel iaculis sapien cursus eu.
+                    </p>
+                </div>
+                <div th:if="${faixaAmarelo}">
+                    <img src="/img/tank-yellow.svg" alt="" width="200">
+                    <h6>Volume atual: <b><span th:text="${volume.volume}"></span> <small>Litros</small></b></h6>
+                    <h6>Ultima verificação: <b><span th:text="${volume.data}"></span></b></h6>
+                    <hr>
+                    <h5>Sinal Amarelo!</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies, velit et egestas suscipit, eros elit dictum lacus, sit amet luctus arcu erat non erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean in leo ac purus auctor finibus. Sed vehicula posuere turpis nec auctor. Sed tellus urna, interdum ac lacus vel, ornare mattis neque. Donec quis sollicitudin neque, vel vestibulum augue. Morbi mauris orci, mollis tincidunt elit ac, laoreet tristique sapien. Curabitur ut malesuada ex. Curabitur dignissim aliquam nisl, in porttitor turpis. In egestas et ex a euismod. Nulla nisi diam, pulvinar ac accumsan vitae, laoreet nec urna. Cras vestibulum est metus, vel iaculis sapien cursus eu.
+                    </p>
+                </div>
+                <div th:if="${faixaVermelho}">
+                    <img src="/img/tank-red.svg" alt="" width="200">
+                    <h6>Volume atual: <b><span th:text="${volume.volume}"></span> <small>Litros</small></b></h6>
+                    <h6>Ultima verificação: <b><span th:text="${volume.data}"></span></b></h6>
+                    <hr>
+                    <h5>Sinal Vermelho!</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies, velit et egestas suscipit, eros elit dictum lacus, sit amet luctus arcu erat non erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean in leo ac purus auctor finibus. Sed vehicula posuere turpis nec auctor. Sed tellus urna, interdum ac lacus vel, ornare mattis neque. Donec quis sollicitudin neque, vel vestibulum augue. Morbi mauris orci, mollis tincidunt elit ac, laoreet tristique sapien. Curabitur ut malesuada ex. Curabitur dignissim aliquam nisl, in porttitor turpis. In egestas et ex a euismod. Nulla nisi diam, pulvinar ac accumsan vitae, laoreet nec urna. Cras vestibulum est metus, vel iaculis sapien cursus eu.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+            
+     
+</section>

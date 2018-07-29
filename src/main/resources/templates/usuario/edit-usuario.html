@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+   	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<section class="offset-lg-2 col-md-10" layout:fragment="conteudo">
+	<br>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${msgError}">
+	  <strong>Ops!</strong> <span th:text="${msgError}"></span>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+    <form id="form-cadastro" name="form-cadastro" method="post" th:action="@{/usuario/update}" th:object="${usuario}">
+           <div class="form-group">                
+               <label for="txt_nome">Nome:</label>
+               <input type="text" id="txt_nome" name="txt_nome" th:field="*{nome}" class="form-control input-sm" required>
+           </div>
+           <div class="form-group">
+               <label for="txt_sobreNome">Sobrenome:</label>
+               <input type="text" id="txt_sobreNome" name="txt_sobreNome" th:field="*{sobreNome}" class="form-control input-sm" required>
+           </div>
+           <div class="form-group">
+               <label for="txt_login">CPF:</label>
+               <input type="text" id="txt_cpf" name="txt_cpf" th:field="*{CPF}" class="form-control input-sm" placeholder="000.000.000-00" readonly>
+           </div>
+           <div class="form-group">
+               <label for="txt_dataNasc">Data de Nascimento:</label>
+               <input type='date' class="form-control input-sm" id="txt-dataNac" name="txt_dataNasc" th:field="*{dataNasc}" placeholder="00/00/0000" readonly />
+           </div>
+           <div class="form-group">
+               <label for="txt_login">E-mail:</label>
+               <input type="email" id="txt_login" name="txt_login" th:field="*{email}" class="form-control input-sm" placeholder="email@exemplo.com" required>
+           </div>
+           <div class="form-group">
+               <label for="txt_senha">Senha:</label>
+               <input type="password" id="txt_senha" name="txt_senha" th:field="*{senha}" class="form-control input-sm" placeholder="******" required>
+           </div>
+           <div class="form-group">
+               <label for="txt_senhaConfirm">Confirme a Senha:</label>
+               <input type="password" id="txt_senhaConfirm" name="txt_senhaConfirm" class="form-control input-sm" placeholder="******" required>
+           </div>
+           <input type="hidden" th:field="*{id}" name="txt_id" id="txt_id"/>
+	       <input type="hidden" th:field="*{perfil.id}" name="txt_id" id="txt_id"/>
+           <a class="btn btn-link" th:href="@{/home}">Voltar</a>
+           <button type="submit" class="btn btn-sm btn-info">Atualizar!</button>
+      </form>
+</section>

@@ -1,0 +1,71 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+@font-face {
+    font-family: AmpleSoft-Medium;
+    src: url("../fonts/AmpleSoft-Medium-webfont.ttf");
+}
+
+.topo{
+    background-image: url("../img/topo.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 60vh;
+}
+
+h1{
+    font-family: 'AmpleSoft-Medium', sans-serif;
+    color: rgb(102,51,153);
+}
+
+
+
+.topo .inner-topo{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(102,51,153);
+    z-index: 999;
+}
+
+.navbar a{
+    color: #fff !important;
+}
+
+.navbar-default{
+	background-color: #666 !important;
+}
+
+h2{
+    font-family: 'AmpleSoft-Medium', sans-serif !important;
+    color: #fff;
+    text-align: center; 
+}
+  
+ .aw-menu__item{
+ 	padding-top: 10px;
+ 	
+ }
+ 
+ .material-icons{
+ 	color: rgb(102,51,153);
+ }
+ 
+ .aw-menu{
+ 	background-color: #ccc;
+ }
+ 
+ .aw-layout-sidebar{
+ 	background-color: #ccc;
+ }
+ 
+span{
+ 	font-family: 'AmpleSoft-Medium', sans-serif !important;
+ 	margin-top: -5px !important;
+ 	color: #666;
+ }
+ 
+
+ 
